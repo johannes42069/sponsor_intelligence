@@ -1,0 +1,25 @@
+-- =============================================================
+-- 01_create_raw_sponsors.sql
+-- Purpose : Documents the raw import of the Home Office
+--           Register of Licensed Sponsors (Worker & Temporary
+--           Worker) into Supabase PostgreSQL.
+-- Source  : https://www.gov.uk/government/publications/register-of-licensed-sponsors-workers
+-- Updated : Monthly by the Home Office
+-- Rows    : ~141,165 (May 2026 extract)
+-- =============================================================
+-- NOTE: The raw_sponsors table was created by importing the CSV
+-- directly via the Supabase Table Editor. The source file was:
+--   2026-05-08_-_Worker_and_Temporary_Worker.csv
+--
+-- Columns in the source CSV:
+--   Organisation Name  -- Employer name as registered with Home Office
+--   Town/City          -- Primary office location
+--   County             -- County (null for ~49% of rows)
+--   Type & Rating      -- Sponsor type and compliance rating (e.g. Worker (A rating))
+--   Route              -- Visa route (e.g. Skilled Worker, Creative Worker)
+--
+-- To re-import on a monthly data refresh:
+--   1. Download the latest CSV from the gov.uk link above
+--   2. Drop and recreate raw_sponsors via Supabase Table Editor CSV import
+--   3. Re-run 02_clean_sponsors.sql to rebuild the clean table
+-- =============================================================
